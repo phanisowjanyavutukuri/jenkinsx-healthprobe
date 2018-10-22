@@ -51,7 +51,7 @@ spec:
 						  
 					 sh '''
 					  
-					  
+					 docker login -u _json_key -p "$(cat /home/first.json)" https://gcr.io
                      docker build -t aclcarrier --file AclCarrier-Dockerfile .
 					 
 					 '''
