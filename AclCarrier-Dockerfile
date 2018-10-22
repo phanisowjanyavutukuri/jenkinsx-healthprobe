@@ -1,11 +1,12 @@
-From maven:3.3.9
+From gcr.io/woven-sensor-214209/fmscarriercommons
 COPY ./ /Fms-Modules/
 RUN chmod -R 777 /Fms-Modules/
 WORKDIR Fms-Modules
+RUN cd FmsCarrierAcl
 RUN mvn clean package install
 
 From sowjanyavutukuri/dependencies_fms
 RUN mkdir Fms-Modules
 WORKDIR Fms-Modules
 COPY --from=0  /Fms-Modules/ .
-entrypoint ["java", "-jar", "/Fms-Modules/AclCarrier/target/AclCarrier.jar", "--spring.config.additional-location=./properties/"]
+entrypoint ["java", "-jar", "/Fms-Modules/FmsCarrierAcl/target/FmsCarrierAcl.jar", "--spring.config.additional-location=./properties/"]
