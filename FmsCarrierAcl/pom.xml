@@ -8,6 +8,23 @@
 		<artifactId>FMS-Logistics</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
+    <repositories>
+    	<repository>
+      		<id>nexus-maven-public</id>
+      		<url>http://35.184.172.244:8081/repository/maven-public/</url>
+    	</repository>
+    	<repository>
+      		<id>nexus-maven-releases</id>
+      		<url>http://35.184.172.244:8081/repository/maven-releases/</url>
+    	</repository>
+     </repositories>
+    <distributionManagement>
+    	<snapshotRepository>
+      		<id>nexus-maven-snapshots</id>
+      		<url>http://35.184.172.244:8081/repository/maven-snapshots/</url>
+    	</snapshotRepository>
+    </distributionManagement>
+  
 	<dependencies>
 		<dependency>
 			<groupId>com.fms</groupId>
