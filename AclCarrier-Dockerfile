@@ -1,8 +1,7 @@
 From gcr.io/woven-sensor-214209/fmscarriercommons:latest
 COPY ./ /Fms-Modules/
 RUN chmod -R 777 /Fms-Modules/
-WORKDIR /Fms-Modules/FmsCarrierAcl
-RUN mvn clean package install
+WORKDIR /Fms-Modules/
 RUN ls -lrth
 
 From gcr.io/woven-sensor-214209/fms-dependencies:latest
