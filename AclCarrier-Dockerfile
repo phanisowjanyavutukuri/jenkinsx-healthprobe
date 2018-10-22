@@ -7,5 +7,6 @@ RUN mvn clean package install
 From gcr.io/woven-sensor-214209/fms-dependencies:latest
 RUN mkdir FmsModules
 WORKDIR FmsModules
+RUN ls -lrth
 COPY --from=0  /FmsModules/ .
 entrypoint ["java", "-jar", "/FmsModules/FmsCarrierAcl/target/FmsCarrierAcl.jar", "--spring.config.additional-location=./properties/"]
