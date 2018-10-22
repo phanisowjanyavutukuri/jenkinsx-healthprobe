@@ -4,7 +4,7 @@ RUN chmod -R 777 /Fms-Modules/
 WORKDIR /Fms-Modules/FmsCarrierAcl
 RUN mvn clean package install
 
-From sowjanyavutukuri/dependencies_fms
+From gcr.io/woven-sensor-214209/fms-dependencies:latest
 RUN mkdir Fms-Modules
 WORKDIR Fms-Modules
 COPY --from=0  /Fms-Modules/ .
