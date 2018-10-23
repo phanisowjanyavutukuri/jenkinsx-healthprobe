@@ -106,7 +106,7 @@ spec:
                              sh '''
 							 TAG_NAME=$(git rev-parse HEAD)
 				             IMAGE_TAG=${TAG_NAME:0:7}
-                             source pod-deployment.sh; application_deployment gcr.io/woven-sensor-214209/aclcarrier aclcarrier stage 1 $IMAGE_TAG stage
+                             source pod-deployment.sh; application_deployment gcr.io/woven-sensor-214209/aclcarrier aclcarrier stage 1 $IMAGE_TAG stag
 							 source pod-service.sh; application_service  aclcarrier stage
                              '''
                            }
