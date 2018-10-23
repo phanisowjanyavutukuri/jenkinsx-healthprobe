@@ -7,6 +7,7 @@ local NAMESPACE=${3:?NAMESPACE}
 local REPLICA_NUMBER=${4:?Need the REPLICA_NUMBER}
 local TAG_NAME=${5:?Need the TAG_NAME}
 local PROFILE=${6:?need the PROFILE}
+local DATABASE_USER=${7:?DATABASE_USER}
 echo "
 apiVersion: apps/v1
 kind: Deployment
