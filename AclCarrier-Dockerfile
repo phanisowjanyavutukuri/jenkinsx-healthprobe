@@ -12,6 +12,7 @@ RUN ls -lrth
 
 From gcr.io/woven-sensor-214209/fms-dependencies:latest
 WORKDIR Fms-Modules
+RUN chmod -R 777 /Fms-Modules/
 RUN ls -lrth
 COPY --from=0  /Fms-Modules/ .
 RUN ls -lrth
