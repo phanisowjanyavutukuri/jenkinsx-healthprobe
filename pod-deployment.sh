@@ -4,7 +4,7 @@ function application_deployment()
 local IMAGE_NAME=${1:?Need the IMAGE_NAME}
 local DEPLOYMENT_NAME=${2:?DEPLOYMENT_NAME}
 local NAMESPACE=${3:?NAMESPACE}
-local REPLICA_NUMBER=${4:?Need the IMAGE_NAME}
+local REPLICA_NUMBER=${4:?Need the REPLICA_NUMBER}
 local TAG_NAME=${5:?Need the TAG_NAME}
 local PROFILE=${6:?need the PROFILE}
 echo "
