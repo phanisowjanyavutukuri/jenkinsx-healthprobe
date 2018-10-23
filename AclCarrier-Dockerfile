@@ -1,19 +1,13 @@
 From gcr.io/woven-sensor-214209/commons:latest
 COPY ./ /Fms-Modules/
-RUN ls -lrth
 RUN chmod -R 777 /Fms-Modules/
-RUN ls -lrth
 WORKDIR /Fms-Modules/FmsCarrierAcl
-RUN ls -lrth
 RUN mvn clean package install deploy
-RUN ls -lrth
 WORKDIR /Fms-Modules/
-RUN ls -lrth
 
 From gcr.io/woven-sensor-214209/fms-dependencies:latest
 WORKDIR Fms-Modules
 RUN chmod -R 777 /Fms-Modules/
-RUN ls -lrth
 COPY --from=0  /Fms-Modules/ .
 RUN ls -lrth
 entrypoint ["java", "-jar", "/Fms-Modules/FmsCarrierAcl/target/FmsCarrierAcl.jar", "--spring.config.additional-location=./properties/"]
