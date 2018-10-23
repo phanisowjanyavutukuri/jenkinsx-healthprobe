@@ -25,12 +25,33 @@ spec:
       labels:
         app: $DEPLOYMENT_NAME 
     spec:
+      initContainers:
+      - name: init-dependencyservice1
+        image: fabric8/fabric8-dependency-wait-service:v6632df1
+        command: ['sh', '-c', 'fabric8-dependency-wait-service-linux-amd64 postgres://$DATABASE_USER@35.225.91.64:5432']
+        env:
+        - name: 'DEPENDENCY_POLL_INTERVAL'
+          value: '10'
+        - name: 'DEPENDENCY_LOG_VERBOSE'
+          value: 'true' 
       containers:
       - name: $DEPLOYMENT_NAME
         image: $IMAGE_NAME:$TAG_NAME
         args: ["--spring.profiles.active=$PROFILE"]
         ports:
-        - containerPort: 8080 
+        - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /actuator/health
+            port: 8080
+          initialDelaySeconds: 3
+          periodSeconds: 3	
+        readinessProbe:
+          httpGet:
+            path: /actuator/health
+            port: 8080
+          initialDelaySeconds: 3
+          periodSeconds: 3
       imagePullSecrets: 
       - name: gcr-json-key" | kubectl apply -f -
     }    
