@@ -5,7 +5,7 @@ RUN chmod -R 777 /Fms-Modules/
 RUN ls -lrth
 WORKDIR /Fms-Modules/FmsCarrierAcl
 RUN ls -lrth
-RUN mvn clean package install
+RUN mvn clean package install deploy
 RUN ls -lrth
 WORKDIR /Fms-Modules/
 RUN ls -lrth
