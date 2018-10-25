@@ -32,10 +32,6 @@ spec:
       privileged: true
   imagePullSecrets: 
   - name: gcr-json-key
-    
-  
- 
-
 
 """
     }
@@ -128,7 +124,7 @@ stage('Production-Deployment') {
                              sh '''
 							 TAG_NAME=$(git rev-parse HEAD)
 				             IMAGE_TAG=${TAG_NAME:0:7}
-                             source pod-deployment.sh; application_deployment gcr.io/woven-sensor-214209/aclcarrier aclcarrier production 1 $IMAGE_TAG prod
+                             source pod-deployment.sh; application_deployment gcr.io/woven-sensor-214209/aclcarrier aclcarrier production 1 $IMAGE_TAG prod fmsprod
 							 source pod-service.sh; application_service  aclcarrier production
                              '''
                            }
