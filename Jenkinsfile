@@ -4,13 +4,13 @@ pipeline {
   }
   agent {
     kubernetes {
-      label "module-1"
+      label "fmscarrieracl-1"
       yaml """
 apiVersion: v1
 kind: Pod
 metadata:
   labels:
-    application: "module-1"
+    application: "fmscarrieracl-1"
   ci: true
 spec:
   containers:
