@@ -48,7 +48,7 @@ spec:
 					 sh '''
 					  
 					 docker login -u _json_key -p "$(cat /home/first.json)" https://gcr.io
-                     docker build -t aclcarrier --file AclCarrier-Dockerfile .
+                     docker build -t FmsCarrierAcl --file FmsCarrierAcl-Dockerfile .
 					 
 					 '''
 				   
@@ -65,8 +65,8 @@ spec:
 				 TAG_NAME=$(git rev-parse HEAD)
 				 IMAGE_TAG=${TAG_NAME:0:7}
                  docker login -u _json_key -p "$(cat /home/first.json)" https://gcr.io
-                 docker tag  aclcarrier  gcr.io/woven-sensor-214209/aclcarrier:$IMAGE_TAG
-                 docker push gcr.io/woven-sensor-214209/aclcarrier:$IMAGE_TAG
+                 docker tag  FmsCarrierAcl  gcr.io/woven-sensor-214209/FmsCarrierAcl:$IMAGE_TAG
+                 docker push gcr.io/woven-sensor-214209/FmsCarrierAcl:$IMAGE_TAG
                
                  
 
@@ -102,7 +102,7 @@ spec:
                              sh '''
 							 TAG_NAME=$(git rev-parse HEAD)
 				             IMAGE_TAG=${TAG_NAME:0:7}
-                             source pod-deployment.sh; application_deployment gcr.io/woven-sensor-214209/aclcarrier aclcarrier stage 1 $IMAGE_TAG stag fmsstage
+                             source pod-deployment.sh; application_deployment gcr.io/woven-sensor-214209/FmsCarrierAcl FmsCarrierAcl stage 1 $IMAGE_TAG stag fmsstage
 							 source pod-service.sh; application_service  aclcarrier stage
                              '''
                            }
@@ -124,7 +124,7 @@ stage('Production-Deployment') {
                              sh '''
 							 TAG_NAME=$(git rev-parse HEAD)
 				             IMAGE_TAG=${TAG_NAME:0:7}
-                             source pod-deployment.sh; application_deployment gcr.io/woven-sensor-214209/aclcarrier aclcarrier production 1 $IMAGE_TAG prod fmsprod
+                             source pod-deployment.sh; application_deployment gcr.io/woven-sensor-214209/FmsCarrierAcl FmsCarrierAcl production 1 $IMAGE_TAG prod fmsprod
 							 source pod-service.sh; application_service  aclcarrier production
                              '''
                            }
