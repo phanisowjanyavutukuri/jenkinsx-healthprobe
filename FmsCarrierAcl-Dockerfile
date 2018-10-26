@@ -1,4 +1,4 @@
-From gcr.io/woven-sensor-214209/commons:latest
+From gcr.io/woven-sensor-214209/fmscarriermavencommons:latest
 COPY ./ /Fms-Modules/
 RUN chmod -R 777 /Fms-Modules/
 WORKDIR /Fms-Modules/FmsCarrierAcl
