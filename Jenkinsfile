@@ -48,7 +48,7 @@ spec:
 					 sh '''
 					  
 					 docker login -u _json_key -p "$(cat /home/first.json)" https://gcr.io
-                     docker build -t FmsCarrierAcl --file FmsCarrierAcl-Dockerfile .
+                     docker build -t fmscarrieracl --file FmsCarrierAcl-Dockerfile .
 					 
 					 '''
 				   
@@ -65,8 +65,8 @@ spec:
 				 TAG_NAME=$(git rev-parse HEAD)
 				 IMAGE_TAG=${TAG_NAME:0:7}
                  docker login -u _json_key -p "$(cat /home/first.json)" https://gcr.io
-                 docker tag  FmsCarrierAcl  gcr.io/woven-sensor-214209/FmsCarrierAcl:$IMAGE_TAG
-                 docker push gcr.io/woven-sensor-214209/FmsCarrierAcl:$IMAGE_TAG
+                 docker tag  fmscarrieracl  gcr.io/woven-sensor-214209/fmscarrieracl:$IMAGE_TAG
+                 docker push gcr.io/woven-sensor-214209/fmscarrieracl:$IMAGE_TAG
                
                  
 
@@ -102,8 +102,8 @@ spec:
                              sh '''
 							 TAG_NAME=$(git rev-parse HEAD)
 				             IMAGE_TAG=${TAG_NAME:0:7}
-                             source pod-deployment.sh; application_deployment gcr.io/woven-sensor-214209/FmsCarrierAcl FmsCarrierAcl stage 1 $IMAGE_TAG stag fmsstage
-							 source pod-service.sh; application_service  aclcarrier stage
+                             source pod-deployment.sh; application_deployment gcr.io/woven-sensor-214209/fmscarrieracl fmscarrieracl stage 1 $IMAGE_TAG stag fmsstage
+							 source pod-service.sh; application_service  fmscarrieracl stage
                              '''
                            }
                            }
@@ -124,8 +124,8 @@ stage('Production-Deployment') {
                              sh '''
 							 TAG_NAME=$(git rev-parse HEAD)
 				             IMAGE_TAG=${TAG_NAME:0:7}
-                             source pod-deployment.sh; application_deployment gcr.io/woven-sensor-214209/FmsCarrierAcl FmsCarrierAcl production 1 $IMAGE_TAG prod fmsprod
-							 source pod-service.sh; application_service  aclcarrier production
+                             source pod-deployment.sh; application_deployment gcr.io/woven-sensor-214209/fmscarrieracl fmscarrieracl production 1 $IMAGE_TAG prod fmsprod
+							 source pod-service.sh; application_service  fmscarrieracl production
                              '''
                            }
                            }
