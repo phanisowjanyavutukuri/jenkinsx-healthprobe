@@ -9,5 +9,4 @@ From gcr.io/woven-sensor-214209/fmscarrierbaseimage:latest
 WORKDIR Fms-Modules
 RUN chmod -R 777 /Fms-Modules/
 COPY --from=0  /Fms-Modules/ .
-RUN ls -lrth
 entrypoint ["java", "-jar", "/Fms-Modules/FmsCarrierAcl/target/FmsCarrierAcl.jar", "--spring.config.additional-location=./properties/"]
