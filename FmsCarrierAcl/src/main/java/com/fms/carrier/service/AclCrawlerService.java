@@ -161,20 +161,30 @@ public class AclCrawlerService {
 			    		 Matcher m = pattern.getPattern().matcher(text);
 			    		 
 			    		 if(m.matches() && pattern.name().matches("P1|P2|P3")){
-			    			 resultTableDTO = AppUtils.prepareResultTableDto(carrierCode, containerNo, bookingRef, blNumber, m.group(1),
+/*			    			 resultTableDTO = AppUtils.prepareResultTableDto(carrierCode, containerNo, bookingRef, blNumber, m.group(1),
+			    					 AppUtils.convertStringToDate(m.group(4), dateFormats), 
+			    					 m.group(3), m.group(2), statusVoyage, sourceTableDTO.getShipment4webtrackingID());
+*/
+			    			 resultTableDTO = AppUtils.prepareResultTableDtoV2(sourceTableDTO, containerNo, m.group(1), 
 			    					 AppUtils.convertStringToDate(m.group(4), dateFormats), 
 			    					 m.group(3), m.group(2), statusVoyage);
 			    			 carrierService.validateAndSaveResultTableDTO(resultTableDTO,sourceTableDTO.getMinDate());
 			    			 break;
 			    		 } else if(m.matches() && pattern.name().matches("P5|P6|P7")){
-			    			 resultTableDTO = AppUtils.prepareResultTableDto(carrierCode, containerNo, bookingRef, blNumber, m.group(1),
+			    			 /*resultTableDTO = AppUtils.prepareResultTableDto(carrierCode, containerNo, bookingRef, blNumber, m.group(1),
 			    					 AppUtils.convertStringToDate(m.group(3), dateFormats),
+			    					 m.group(2), "", statusVoyage, sourceTableDTO.getShipment4webtrackingID());*/
+			    			 resultTableDTO = AppUtils.prepareResultTableDtoV2(sourceTableDTO, containerNo, m.group(1), 
+			    					 AppUtils.convertStringToDate(m.group(3), dateFormats), 
 			    					 m.group(2), "", statusVoyage);
 			    			 carrierService.validateAndSaveResultTableDTO(resultTableDTO,sourceTableDTO.getMinDate());
 			    			 break;
 			    		 } else if(m.matches() && pattern.name().matches("P4")){
-			    			 resultTableDTO = AppUtils.prepareResultTableDto(carrierCode, containerNo, bookingRef, blNumber, m.group(1),
+			    			 /*resultTableDTO = AppUtils.prepareResultTableDto(carrierCode, containerNo, bookingRef, blNumber, m.group(1),
 			    					 AppUtils.convertStringToDate(m.group(4), dateFormats),
+			    					 m.group(2), m.group(3), statusVoyage, sourceTableDTO.getShipment4webtrackingID());*/
+			    			 resultTableDTO = AppUtils.prepareResultTableDtoV2(sourceTableDTO, containerNo, m.group(1), 
+			    					 AppUtils.convertStringToDate(m.group(4), dateFormats), 
 			    					 m.group(2), m.group(3), statusVoyage);
 			    			 carrierService.validateAndSaveResultTableDTO(resultTableDTO,sourceTableDTO.getMinDate());
 			    			 break;
